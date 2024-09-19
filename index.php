@@ -8,14 +8,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'] ?? '';
 
-    $sql = "INSERT INTO users (user_name, surname, user_email, user_password) VALUES (?, ?, ?, ?)";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $username, $surname, $email, $password);
+    if (!empty($username) && !empty($surname) && !empty($email) && !empty($password)) {
+        $sql = "INSERT INTO users (user_name, surname, user_email, user_password) VALUES (?, ?, ?, ?)";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $username, $surname, $email, $password);
 
-    echo $stmt->execute() ? "New user registered successfully" : "Error: " . $stmt->error;
+        if ($stmt->execute()) {
+            echo "New user registered successfully";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
 
-    $stmt->close();
+        $stmt->close();
+    } else {
+        echo "Please fill in all fields";
+    }
 }
 
 $conn->close();
