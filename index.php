@@ -5,6 +5,7 @@ header('Content-Type: text/html; charset=UTF-8');
 require('app/config/config.php');
 require('app/config/db.php');
 require('app/functions/validate.function.php');
+require('app/functions/helper.function.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {	
@@ -50,8 +51,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				<?php include ('templates/form.html.php'); ?>
 			</section>
 			<section class="content">
-				<h1 class="align-center">Lista użytkowników</h1>
-				<?php //include ('templates/users.html.php'); ?>
+				<center><h1 class="align-center">Lista użytkowników</h1></center>
+				<?php include ('templates/users.html.php'); ?>
 			</section>
 		</main>
 	</body>

@@ -1,7 +1,7 @@
 
 <?php
 
-$html = '<table class="tbl-users">';
+$html = '<center><table class="table table-dark"></center>';
 $html .= '<tr><th>ID</th><th>imię i nazwisko</th><th>email</th><th>aktywność</th></tr>';
 $sql = "SELECT * FROM users";
 $res = $db->query($sql);
@@ -14,7 +14,7 @@ if ($res->num_rows > 0)
         $html .= '<td>' . $row['id'] . '</td>';
         $html .= '<td>' . $name . '</td>';
         $html .= '<td>' . $row['user_email'] . '</td>';
-        $html .= '<td class="align-center">' . showStatusIcon($row['active']) . '</td>';
+        $html .= '<td>' . showStatusIcon($row['active']) . '</td>';
         $html .= '</tr>';
 	}
     echo $html;
