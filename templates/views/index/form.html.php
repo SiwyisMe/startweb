@@ -15,5 +15,5 @@
         <label for="password" class="form-label">Hasło</label>
         <input type="password" class="form-control" id="password" name="password" required>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <center><button type="submit" class="btn btn-primary">Submit</button></center>
 </form>
